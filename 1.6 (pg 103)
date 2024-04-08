@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(0);
+    string s, s1, str;
+    int n, i, dem = 1;
+    vector<int> v;
+    cin >> s;
+    str = s;
+    n = s.size();
+    s = "." + s;
+    for (i = 1; i <= n;)
+        {
+            if (s[i] == s[i+1])
+                {
+                    dem++;
+                    i++;
+                }
+            else {
+                v.push_back(dem);
+                dem = 1;
+                i++;
+            }
+        }
+    s = s + ".";
+    int dex = 0;
+    for (i = 1; i <= n; i++)
+        if (s[i] != s[i+1])
+            {
+                string s2 = to_string(v[dex]);
+                s1 = s1 + s[i] + s2;
+                dex++;
+            }
+    if (s1.size() > n)
+        cout << str << "\n";
+    else 
+        cout << s1 << "\n";
+}
